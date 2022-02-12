@@ -1,0 +1,31 @@
+After searching about way to use Firebase to receive an SMS with verification code when  trying to register as new user in the Food App , I found these :
+
+1- Firebase doesn't have an SMS sending API  but wean use services like Nexmo or Twilio for that. Alternatively, we can use AWS SNS to send SMS.
+
+
+
+	
+2- I tried to understand Keycloak and how its  OTP work.
+Keycloak authenticates users using:
+   1-  Password
+   2- An one-time password (OTP)
+   
+  * we can enforce user configure OTP , https://ultimatesecurity.pro/post/2fa/ 
+  but this need User’s Mobile Authenticator   (FreeOTP OR Google Athenticator) that use to sacn a barcode to get generated code then user provide this code to complete login .
+  but this method is used in web app not mobile app .
+  
+  * there is  a way that someone implemnted it . he implement keycloak authentication provider to get 2FA (2 FACTOR AUTH) with OTP then uses AWS SNS TO SEND SMS .
+  https://www.n-k.de/2020/12/keycloak-2fa-sms-authentication.html
+    Also we can use this way with twilio insted of AWS SNS .
+    
+    
+3- we can send SMS Verification using Firebase and we cannot send ordinary SMS through Firebase.we can send using Twilio instead.
+	Links : https://firebase.google.com/docs/auth/android/phone-auth 
+	and https://medium.com/nonstopio/otp-one-time-passcode-authentication-using-firebase-10b0111aba8a 
+	we should add our project to Firebase and enable “Phone sign-in method” .
+	this is the best way although phone numbers that end users provide for authentication will be sent and stored by Google .
+	. so i implemented an  API that verify the phone number from session info and the code that was sent to user inside sms and create new user that username is his mobile number      		with password is local id (each user has mobile number with unique user id ) 
+
+  
+  
+

@@ -1,0 +1,61 @@
+useful links : https://www.parasoft.com/blog/junit-tutorial-setting-up-writing-and-running-java-unit-tests/
+https://www.parasoft.com/blog/mocking-in-java-how-to-automate-a-java-unit-test-including-mocking-and-assertions/
+
+
+Testing Method : 
+1- Unit Testing : test individual units/parts and  shows that this part is correct (verify functionality ).
+		*units are methods and classes i.e : each unit performs standalone task (single method or single class)
+		*this is performed  by developers team .
+		*the developer chooses inputs and put the expected output
+2- Regression Testing: test the latest fix(whether if code is changed or new functionality or dependencies/packages are added)
+
+2- Integration Testing : test that group og=f modules in project are working fine togother . this test is performed after unit testing . this is performed bt testing team .
+
+3- System testing : test athe all project .
+
+////////////////////////////////////////////////////////////////////////////////
+
+Junit : 
+	it is java unit testing framework .
+	* it has evolved over time . the best change is the annotaions was added . 
+	* Junit 5 was split into 3 modules, one of those being a vintage module that supports annotation/syntax of Junit 4 and 3 (although usage of Junit 3 is frankly dismal  		 and typically seen only in much older projects).
+	
+----> Writing Unit Tests:
+	 1- naming convention : className +Test word . ex : Conversion -> ConversionTest .
+	 			 test word + methodName . ex tempConversion -> testTempConversion .
+	 2- @Test annotation above method : this tells JUnit that this method is a test case . 
+	    @Before : run some statements before @Test .
+	    @After : run some statments after @Test .(we needed for deleting/resetting variables /deleting temperory files )
+	    @Ignore : ignore some statment during testing 
+	    @BeforeClass and @AfterClass : used to execute statments before/after all test cases .
+	    
+	 3- we must construct a new object from this class to use it to test the methods inside class . 
+	 4- declare variables(arguments that needed in the method ) and initiated them .if the  parameter is an object, one can instantiate it, or mock it.
+	 5- it is optional to declare the result , but it is for sake of companies . we may use it in assertions . 
+	 6- assert methods : from org.junit.Assert class used to get the status of testcase (pass/fail)
+	     there is many assert method , one of them is assertequal (expected,actual,delta) , delta : allowed deviation between expected and actual values. 
+	     
+ **  More complex methods call databases or other methods so we need an isolation to isolate this test case , we  achieve this through moking which helps to isolate unit and   		focus on validation and assertion .
+ ** instead of wast time with declaration and instantiation the other object that the mwthod needed we used mokito , used to isolate the class under test from its dependencies.
+    **Mockito.mock() is used to create mock instance of dependencies or (dependent Objects)
+    **Mockito.when is used to put value of calling method that may called when mock instance is created .
+    
+    challenges : 1-tests may require lots of mocks 2-When the application changes, the tests (and mocks) need to be updated too 
+    
+    we can make mockclass for each class and define inside it the mokito.when , then call it to create mock instance in each method that needs it .   
+
+ 
+ 
+ 
+ //////////////////////////////////////////////////////////////////////////////////
+ **spring-boot-starter-test : include JUnit 4 by default  , if we want to use junit5 we have to exclude junit 4 fron springboot test .
+ *@Mock annotation creates a mock implementation for the class it is annotated with
+ *@InjectMocks also creates the mock implementation, additionally injects the dependent mocks that are marked with the annotations @Mock into it.
+ 
+ ///////////////////////////////////////////////////////////////////////////////////
+ ** If you are using Junit version < 5, so you have to use @RunWith(SpringRunner.class) or @RunWith(MockitoJUnitRunner.class) etc.
+ ** If you are using Junit version = 5, so you have to use @ExtendWith(SpringExtension.class) or @ExtendWith(MockitoExtension.class) etc.
+** @SpringBootTest is meta annotated with @ExtendWith(SpringExtension.class)
+**@ExtendWith(MockitoExtension.class)
+ 
+ 	    

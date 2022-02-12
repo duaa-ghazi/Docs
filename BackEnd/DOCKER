@@ -1,0 +1,127 @@
+* To push and rum image into server : 
+
+  1- 
+
+  ```
+  ssh -l root 206.189.178.228
+  root@124Asc
+  ```
+
+  2- in developer side :
+
+     go into service folder, then :
+
+  ```bash
+  $ ./mvnw package -Pprod -DskipTests jib:dockerBuild 
+  #this build new image of this service
+  
+  $ docker images ls 
+  #this show you the new image .
+  
+  $docker tag newimageid altshiftcreative/food-app-user-service:v1:new   # newimageid is the id of the latest 
+  
+  $docker push altshiftcreative/food-app-user-service:v1:new 
+  #this push the image into docker hub inide repository , we must login into : docker login then the user name and password .
+  ```
+
+  
+
+  ```bash
+  
+  ```
+
+  ```bash
+  
+  ```
+
+  3-in server side:
+
+  go to /food/docker
+
+  ```bash
+  $docker-compose -f user-service.yml down 
+  #this stop the image 
+  
+  $ docker images
+  $ docker rmi  oldversionofimageId 
+  #this remove the old-image if we want . 
+  
+  $nano user-service.yml 
+  #then we put the version of new image . 
+  
+  $docker-compose -f user-service.yml up -d
+  #this running container for new image .
+  
+  $docker logs  docker_food-user-service_1 -f
+  #used to to show logs for this container .
+  #docker_food-user-service_1 :nameofcontainer . 
+  
+  ```
+
+  
+
+Note : instead of do these steps we can automated the procces in developer side .this is for  appling CI/CD concept . 
+
+we must use plugin to handle this process. (spotify-fabric8/jib )
+
+```bash
+#for jib maven plugin 
+sudo ./mvnw package -Dprod  -DskipTests jib:dockerBuild docker:push "-Ddocker.image.version=v1.15"
+
+#we can login into docker hub by specify the username and password inside properties in pom.xml , docker.image.version is a variable in properties . and put it inside auth config . 
+
+```
+
+```bash
+#for fabric maven plugin 
+./mvnw "immersion=1.0.0"
+./mvnw package -Pprod -DskipTests  jib:dockerBuild docker:push docker:remove "-Dimmersion=v1.0.0"
+
+# <immersion>${immersion}</immersion>
+# <docker.hub.username>altshiftcreative</docker.hub.username>
+# <docker.hub.password>AltShift@124</docker.hub.password>
+# below the plugin
+```
+
+```xml
+  <plugins>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>0.33.0</version>
+                    <configuration>
+                        <verbose>true</verbose>
+                        <images>
+                            <image>
+                                <name>altshiftcreative/food-app-store-                                       service</name> <!--name of new image-->
+                                <build>
+                                    <assembly>
+                                                                                                              <descriptorRef>artifact</descriptorRef>
+                                    </assembly>
+                                    <tags>
+                                        <tag>${immersion}</tag> <!--name of                                            new image--> from cmd .
+                                    </tags>
+                                </build>
+                            </image>
+                        </images>
+                        <authConfig>  <!--docker repo-->
+                            <username>${docker.hub.username}</username>
+                            <password>${docker.hub.password}</password>
+                        </authConfig>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>push</id>
+                            <phase>install</phase>  <!--maven life cycle-->
+                            <goals>
+                                <goal>stop</goal>
+                                <goal>build</goal>
+                                <goal>push</goal>
+                                <goal>remove</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+```
+

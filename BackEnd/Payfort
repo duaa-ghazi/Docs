@@ -1,0 +1,9 @@
+Payfort :
+*it is payment gateway . it is used to accept online payments via credit card through FORT,  .We can integrate this payment gateway in our project with secure payment for customers .
+
+*based on PCI (Payment Card Industry Data Security Standard) ,Payfort chose amazon as cloud provider and run FORT entirely on AWS technologies. 
+* Sensitive financial data is stored in Amazon Simple Storage Service .
+*PayFort operates in the US East (N. Virginia) and US West (Oregon) AWS Regions.
+*PayFort runs its Oracle database on Amazon Relational Database Service (Amazon RDS),
+and using CloudHSM encryption service(cloud-based hardware security module (HSM) ) that enale us to generate and use our own encryption keys on the AWS Cloud.
+

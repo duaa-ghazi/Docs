@@ -1,0 +1,29 @@
+542985755779-b2ee815nr166dej2ct2ndvihti3hs4gl.apps.googleusercontent.com
+
+
+
+http://localhost:9080/auth/realms/jhipster/protocol/openid-connect/auth?client_id=web_app&kc_idp_hint=google&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A4200
+
+
+
+
+this is also working : 
+
+http://localhost:9080/auth/realms/jhipster/protocol/openid-connect/auth?client_id=web_app&redirect_uri=http://localhost:4200&response_type=code&scope=openid%20profile%20email&kc_idp_hint=google
+
+
+
+https://shopbia.shop/auth/realms/jhipster/protocol/openid-connect/auth?client_id=web_app&kc_idp_hint=google&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A4200
+kc_idp_hint=google/facebook/apple
+instead of given redirect url you will put  to which page should return after login 
+
+https://www.google.com/
+
+
+
+https://shopbia.shop/auth/realms/jhipster/protocol/openid-connect/auth?client_id=web_app&kc_idp_hint=google&response_type=code&redirect_uri=https://www.google.com/
+
+https://shopbia.shop/auth/realms/jhipster/protocol/openid-connect/auth?client_id=web_app&kc_idp_hint=google&response_type=code&redirect_uri=https://shopbia.shop
+
+
+https://shopbia.shop:9080/auth/realms/jhipster/broker/apple/endpoint

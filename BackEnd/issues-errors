@@ -1,0 +1,46 @@
+address already in use (8080):
+
+sol:
+sudo kill -9 $(sudo lsof -t -i:8080)
+
+//////////////////////////////////////////////////////////
+
+for database :
+
+```
+sudo systemctl stop mysql.service
+```
+
+
+
+
+
+///////1
+https://github.com/MahiSharew/onlineFoodDelivery
+
+
+///////2
+https://github.com/food-boot/food_delivery_web_app_backend_springboot
+
+//////3
+https://github.com/djselzlein/food-delivery/tree/master/src/main
+
+
+
+sudo docker-compose -f src/main/docker/jhipster-registry.yml up -d
+
+sudo docker restart $(sudo docker ps -a -q)
+sudo docker start $(sudo docker ps -a -q)
+sudo docker container ls -a
+
+ sudo docker rm  5df4d1cf3729
+
+ ///pageable
+ https://javatodev.com/spring-boot-pagination-sorting-and-filtering/
+
+ 
+
+ 192.168.0.130
+
+ /home/duaa/.m2/repository/org/kurento/kurento-utils-js/6.15.0/kurento-utils-js-6.15.0.jar!/META-INF/resources/js/kurento-utils.js
+

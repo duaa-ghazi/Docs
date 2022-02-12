@@ -1,0 +1,41 @@
+websocket :
+
+	adv: 
+	   1- send or receive any data
+	
+	disadv:
+	   1-can't capture video data (it  can send since it is a transport protocol but it is not tool to capture video ),
+	   2-Websocket needs a server per session,
+	   3-It is not an easy task to send a stream of audio and video data over the Internet
+webrtc:
+	adv:
+	  1-enables web browsers and native clients for major platforms to exchange video, audio, and generic data through data Channel without the need for an intermediary such as a server.
+	  2-WebRTC is a P2P connection, so WebRTC is faster.
+	  3-WebRTC is designed for high-performance, high-quality communication of video, audio and arbitrary data.
+	  4- WebRTC we can build a full featured video chat app running in a browser without requiring the user to download any software
+	  5-Encoding and Decoding Audio and Video
+	 disadv:
+	    1-WebRTC utilizes P2P, a user can trace another user's IP Address
+	    2- we  need a signal server to exchange SDP for WebRTC. we can use websocket to build the signal server.
+	 
+	 **it is used by Facebook Messenger, Discord,    
+
+
+​	   
+**WebRTC is designed for high-performance, high quality communication of video, audio and arbitrary data.
+
+WebRTC apps need a service via which they can exchange network and media metadata, a process known as signaling. However, once signaling has taken place, video/audio/data is streamed directly between clients, avoiding the performance cost of streaming via an intermediary server.
+
+WebSocket is designed for bi-directional communication between client and server. It is possible to stream audio and video over WebSocket, but the technology and APIs are not inherently designed for efficient, robust streaming in the way that WebRTC is.
+
+xmpp:
+It had a server on jabber.com
+
+	dis:
+	 XMPP is an XML based application protocol which will not allow you to do some specific customizations. 
+	 we  want to use websockets as transport protocol (except handshakes) for your XMPP for real-time messaging
+
+
+​	
+​	
+

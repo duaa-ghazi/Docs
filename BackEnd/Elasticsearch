@@ -1,0 +1,36 @@
+***********ElasticSearch *************
+It is  A Search engine .Elasticsearch is a document oriented database.
+
+logical concepts :
+ 
+	1) documents :
+		expresses in JSON ,(Like Object /Row in the database ) , relates to specific index .
+		Each document has unique id (maybe it is custum id )
+		
+	2) Indices :
+		collection of documents , (Like class / table in database ) 
+		the documents is related togother 
+	3) Inverted Index :
+		each index is actually inverted index in elasticsearch and all search engine .
+		each inverted index doesnt store the string or text directly but it splits all string in  all the documents that belong to it into terms( each word is a term ) .
+		each term has id and value and which documents that this term is occured in them .
+	
+
+Backend Components :
+	1) Cluster : elastiSEARCH CLUSTER is agroup of nodes , tha adv of cluster is the power of distribution the tasks to nodes that are belong to this cluster 
+	2) Node : it is single server that is part of cluster , each node has task like store data , make indexing ,searching ,etc...
+		a) Master Node : this node controls the cluster and it responsible for the general operations of cluster like create/delete index , Add/Remove nodes 
+		b) Data Node : it responible for store data and execute the operartions on the data such as search .
+		c) Client Node : it responsiple for forwading requests ,the cluster general  requests to master node and the data related request to data node .
+		
+	3) Shareds : elasticsearch able to sudivide the index into pieces called shared . so the shared is a subIndex , the documents that belong to index is distributed to shareds 
+			and this shareds distributed to nodes inside cluster .
+			
+	4) replicas : the replica is a copy of shared index (which is primary shared has documents) , so replicas is a redundant copies of data ,this is usefull since the data is 				protect if hardware failure is happend also for increase the capacity ofrequests (search/get documents ).
+	
+  
+ ELK (elastic Stack) : elasticsearch /Logstash /Kibana and also include beans . it is set of tool for data enrichment,storing,visulization,analysis.
+ kibana : it a tool for visualization data in real time .realtime histogram,charts,maps .For example,  Kibana is often used for log analysis.
+ Logstash: used for aggregate and process data and send it to Elasticsearch. it ingests data from a multitude of sources simultaneously(at the same time)
+ ,Logstash allows you to tie different systems together like web servers, databases, Amazon services, etc.
+ beats: used to send data from hundreds or thousands of machines and systems to Logstash or Elasticsearch.

@@ -1,0 +1,5 @@
+1) get Followers using pagination
+   -> @GetMapping("v1/stores/{storeId}/followersOfStore") inside StoreFollowerResource 
+   ->http://localhost:8081/api/v1/stores/9/followersOfStore?page=0&size=2&sort=id,DESC   
+   note : default page =0 ,size=10(or less if list size less than 10 ) sort=id,asc 
+

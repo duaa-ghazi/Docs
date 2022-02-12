@@ -1,0 +1,56 @@
+1)Add new Store Type(new Shop) : http://127.0.1.1:8081/api/v1/store-types/
+
+
+ 
+
+        "type": required (not null , not empty , not repeated (unique )) these requirments will be  checked inside our service .
+        "imageUrl": required (not null , not empty , it should as this pattern ),
+        "description": not necessary ,
+        "creationDate": not necessary , // this will be filled inside service 
+        "createdBy": not necessary   // this will be filled inside service 
+ 
+ 
+validation : 1- check if type not null or empty
+  		2- check if id was not sent 
+  		3- check the img url 
+check if it is unique by type : the store type should not be repeated 
+
+save ...
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2)get all store-types : http://127.0.1.1:8081/api/v1/store-types?page=2&size=5
+
+you determine the page number and the size in each page .
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+3)get store type by id : http://127.0.1.1:8081/api/v1/store-types/12
+  
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+4)update info of store type : http://127.0.1.1:8081/api/v1/store-types/info
+
+
+	    "id": required,
+	    "type": required (not null , not empty , not repeated(unique ) (but it is allowded to be same) ) these requirments will be  checked inside our service .
+	    "imageUrl": required (not null , not empty , it should as this pattern ),
+	    "description": not necessary if it is not exist else it is required
+	    "creationDate":required,
+	    "createdBy": required
+
+update validation : 1- check if type not null or empty
+  	             2- check the img url 
+check if it is unique by type : the store type should not be repeated  but it is allowed  to be  same )
+
+save... 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+5)delete specific storeType : http://127.0.1.1:8081/api/v1/store-types/1
+
+
+
+
+

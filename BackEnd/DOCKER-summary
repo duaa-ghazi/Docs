@@ -1,0 +1,222 @@
+docker :
+
+* docker: -> like a virtual machine but faster 
+  			-> it is tool to run app in isolated environment
+    			->run in same exact machine(if works on my machine it will work on it ) also work on production enviroment .
+    			->it is standard for software deployment since it make it easier for packaging applications that we don't need to deal with .
+
+* containers vs virtual machine :
+
+	container:(abstract on top of app layer)
+		->it pakages the code and dependencies toghether
+		->many containers run on same machine and share os kernal so the container doesnt require full os .
+		->the container running as isolated process (each container run isolated on other containers)
+		
+	virtual machine :(abstraction of physical hardware)
+		-> turning one server into many servers.
+		->multiple virtual machine can run on same machine using hypervisor .
+		->each VM is a full copy of os (with libraries ,Apps,binaries)(ten of GBs)
+		->VM is slow to boot .
+
+* layers in container :  each app can be contain app and the docker manage them  
+  	
+
+  ```
+  app app app app 
+  	   docker 
+  	   Host os
+  	infrastructure 
+  ```
+
+* layers in VM : there is a hypervisor on top of infrastructure .it allows to turn from server to server therefore VM needs full os (guest os)
+
+       VMAPP(in guestOs)  VMAPP(in guestOs)   VMAPP(in guestOs) 
+        hypervisor
+        infrastructure
+
+
+*******************************************************************************
+
+* adv of docker :
+  	-> run the containers in second not in minutes
+  	->need less resource(less memory)(less disk space)
+   	->does not need full os 
+   	->use in deployment and testing(test locally and it will work on any environment)
+
+* note : Docker deamon must be running
+
+* Docker images and containers :
+  	1- Images : it is a template for create environment of our choice .
+  	       ->it can be a database,webapp,app Do Some processing ,etc...
+  	       ->it is also  a snapshot ,we can make multiple snapshots(images) with different   version(each image pushed in a repository so it is saved and useful for erroring)
+  	       ->it contains everything that app needs to run(os ,software,app code).
+
+  ​	 2- Container : it is a running instanse from image 
+
+  ```bash
+  $ sudo docker container ps # show all containers .
+  ```
+
+  
+
+  * docker hub :https://hub.docker.com/    this contain the most popular  images
+     it is a Registry (a place where we can push and pull images ).,it is contains common pupular images which  are public , and contains private images .
+
+    ```bash
+    $ sudo docker pull nginx 
+    # pull the newest image(nginx:latest) which name is nginx .it is pull everthing (layers..) if this image changed then we don't have to download every layers just the changed layers because it is cached .
+    
+    
+    $ sudo docker images 
+    #to see all images that we have locally .
+    
+    $ sudo docker run nginx:latest   
+    #to run a container from image .it is a hang command.
+    
+    $ sudo docker run -d nginx:latest 
+    # to run a container from image in detached mode .this command not hanging .
+    
+    $ sudo docker container ls OR $ sudo docker container ps    
+    # ls for list and ps for process status .ls is the newer , these commands show the containers that running .
+    
+    $sudo docker ps
+    # it is also show the running containers only ( it is the same of above command but it shows also name colomn  , this used since it is easier)
+    
+    $sudo docker ps --help 
+    # it shows the command after ps
+    $sudo docker ps --all  or -a  #shows the running and stopped containers 
+    $sudo doker ps --quit or -q
+    #shows all IDs of running containers .
+    
+    $sudo docker ps --size or -s
+    # it shows all colomns of containers plus the size of it .
+    
+    $sudo docker -aq or -a -q 
+    #shows the IDs of all containers(running and stopped )
+    
+    $sudo docker run -d -p 8080:80 nginx:latest 
+    # to run container from image with mappings port . ex: the service is runed from local host port or server port and mapped port (usually same port)on container will run .  so host port mapping with container port ,
+    
+    $sudo docker run -d -p 8080:80 -p 3000:80 nginx:latest 
+    # we can determine more than one host port for the same container port .to expose port with docker , for example : we have host that has running container for nginx image and it expose to tcp port 80 ,we want to do a request to this container which expose port 80 , on web browser when we type localhost:8080 ,this should mapped into port 80 .
+    
+    $sudo docker stop containerId 
+    # this stopes the container from running , but it still exist (does not remove it ) ,
+    
+    $sudo docker stop nameOfCONTAINERnotImage  
+    #this stopes the container from running , but it still exist (does not remove it ) , the container's name can be shown from docker ps which is unique like id .
+    
+    $sudo docker start Id/containername 
+    #start run  container .
+    
+    $sudo docker start $(sudo docker ps -aq) 
+    # start run all containers.
+    
+    $sudo docker rm id/nameofContainer 
+    #remove the container if it is stopped.
+    
+    $sudo docker rm -f id/nameofContainer 
+    #force remove the container whether if it is running or not.
+    
+    $sudo docker rm -f $(sudo docker ps -aq) 
+    #remove every containers
+    
+    $sudo docker run --name newName -d -p 000:0 nginx:latest   
+     #to rename the docker  ,after that The container's name is random name(in our project it takes the path ) if we dont specify the name of container of an image. we can specify more than one container for same image ,we can use t it's name instaed of it's id  . ex : docker run/stop/start newName .
+    
+    $sudo docker pa --format =$FORMAT 
+    # we can determine the format of docker ps : define an variabke called FORMAT : $export FORMAT="...." Then :
+    #$sudo docker ps    : without format 
+    #$sudo docker pa --format =$FORMAT    : with format (amigoscode used format that seperate each container )
+    
+    
+    
+    
+    ```
+
+
+    		   
+    
+    * Docker volumes :
+        ->Allows to share data [files or folders]
+        ->share data between host and container also between containers .
+       -> we have a container running on port 80tcp (container port ) on a host 
+          we create volume inside container this volum used to share data between container  and host  so if we put a file in the host it will appear in the container inside volume and vice versa (if we put file inside  #volume inside a  container it will appear in a host os )
+    
+      ```bash
+      $sudo docker run --name newname -v some/content/ : /usr/share/html :ro 
+      #inside hub.docker.com , we can see how we can use each image to host a files with volums  through docker run .....
+      # volume    source from host   : dest inside container (we put folder and shared files like html page)  : read only     
+      #Amount our directly(src) inside of this dest file .  
+      
+      
+
+* Docker-compose :
+
+  -> used to running multiole docker app . we use YAML file contains configuration for app service . 
+
+  A Compose file looks like this:
+
+  ```
+  services:
+  
+    web:
+      build: .
+      ports:
+        - "5000:5000"
+      volumes:
+        - .:/code
+    redis:
+      image: redis
+  ```
+
+
+​	
+
+```yaml
+version: '2'
+services:
+  storeservice-app:
+    image: storeservice
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,swagger
+      - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
+      -EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE  =http://admin:$${jhipster.registry.password}@jhipster-registry:8761/eureka
+      - SPRING_CLOUD_CONFIG_URI=http://admin:$${jhipster.registry.password}@jhipster-registry:8761/config
+      - SPRING_DATASOURCE_URL=jdbc:mysql://storeservice-mysql:3306/storeservice?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+      - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=http://keycloak:9080/auth/realms/jhipster
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=internal
+      - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=internal
+      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - KAFKA_BOOTSTRAPSERVERS=kafka:9092
+  storeservice-mysql:
+    extends:
+      file: mysql.yml
+      service: storeservice-mysql
+  kafka:
+    extends:
+      file: kafka.yml
+      service: kafka
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+  zookeeper:
+    extends:
+      file: kafka.yml
+      service: zookeeper
+  jhipster-registry:
+    extends:
+      file: jhipster-registry.yml
+      service: jhipster-registry
+    environment:
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_TYPE=native
+      - SPRING_CLOUD_CONFIG_SERVER_COMPOSITE_0_SEARCH_LOCATIONS=file:./central-config/docker-config/
+
+```
+
+* In this file, we need to specify the *version* of the Compose file format, at least one *service*, and optionally *volumes* and *networks*.
+* services refer to containers' configuration.
+*  a volume is a shared directory in the host,
+* networks define the communication rules between containers, and between a container and the host.
+
