@@ -94,7 +94,7 @@ docker :
     $sudo docker -aq or -a -q 
     #shows the IDs of all containers(running and stopped )
     
-    $sudo docker run -d -p 8080:80 nginx:latest 
+    $sudo docker run -d -p 8080:80 nginx:latest                                                                  
     # to run container from image with mappings port . ex: the service is runed from local host port or server port and mapped port (usually same port)on container will run .  so host port mapping with container port ,
     
     $sudo docker run -d -p 8080:80 -p 3000:80 nginx:latest 

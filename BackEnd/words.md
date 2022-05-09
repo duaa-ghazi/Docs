@@ -58,3 +58,12 @@ efficient  :فعال
 
 enhance:يحسن
 
+use intention-revealing names استخدام أسماء تكشف النية:لإثارة إعجاب
+
+ MAKE MEANINGFUL distinction : اجعل تمييزًا ذا مغزى
+
+solely :بمفردي
+
+dont pun  :لا تلاعب
+
+opaque :مبهمة

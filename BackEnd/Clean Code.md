@@ -55,3 +55,50 @@
 
 
 
+*************
+
+Chapter 2 : Meaningful Names 
+
+![](/home/duaa/Pictures/cc4.png)
+
+![](/home/duaa/Pictures/cc5.png)
+
+ 
+
+![](/home/duaa/Pictures/cc6.png)
+
+![](/home/duaa/Pictures/cc7.png)
+
+![](/home/duaa/Pictures/cc8.png)
+
+* use intention-revealing names 
+
+* If a name requires a comment, then the name does not reveal its intent.  
+
+  ```
+  int d; // elapsed time in days
+  ```
+
+* We should avoid words whose entrenched meanings vary from our intended meaning
+
+* accountList :x: ->  accountGroup or bunchOfAccounts or just plain accounts would be better. it’s probably better not to encode the container type into the name. 
+
+* . Using inconsistent spellings is disinformation.
+
+*  make your names pronounceable.
+
+* Use Searchable Names  : Single-letter names and numeric constants have a particular problem in that they are not easy to locate across a body of text.
+
+* avoid encoding :encoding “language” ,Java programmers don’t need type encoding
+
+* Interface and implementation :   IShapeFactory and ShapeFactory? I prefer to leave interfaces unadorned. ShapeFactory is preffered .  So if I must encode either the interface or the implementation, I choose the implementation -> ShapeFactoryImp 0r CShapeFactory
+
+* Class Names :Classes and objects should have noun or noun phrase names like Customer, WikiPage ... ,class name should not be a verb.
+
+* Methods Names:   should have verb or verb phrase names like postPayment, deletePage, or save. prefixed with get, set, and is 
+
+* Say what you mean. Mean what you say
+
+* dont pun :Avoid using the same word for two purposes “one word per concept”.
+
+  
