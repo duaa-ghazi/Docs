@@ -366,3 +366,7 @@ In general, if you want a simple/traditional pub-sub message broker, the obvious
 
 ![](/msss2.png)
 
+![](/Screenshot from 2022-05-11 16-00-58.png)
+
+![Screenshot from 2022-05-22 14-01-24](/Screenshot from 2022-05-22 14-01-24.png)
+
