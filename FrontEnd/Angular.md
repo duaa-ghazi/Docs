@@ -1,3 +1,8 @@
+---
+typora-copy-images-to: angular-img
+typora-root-url: angular-img
+---
+
 # **Angular :**
 
 #### 1- what is angular
@@ -132,7 +137,7 @@ section 1 : Getting started
 
 * Angular versioning :
 
-  ![](/home/duaa/Pictures/s1.png)
+* ![](/s1.png)
 
   * Angular command Line (CLI) :
 
@@ -217,7 +222,7 @@ npm install -g @angular/cli       // g : global    this install angular cli from
 
   ts does not run in the browser it is compiled into js by the CLI (that one of the reasons that why we need CLI (as project management ))
 
-![](/home/duaa/Pictures/s2.png)
+![](/s2.png)
 
 
 
@@ -247,9 +252,9 @@ SECTION 2 :The Basics .
 
   *inside index.html (in inspect) there are scripts below that injected by the CLI automatically  . these not appear inside file inside vs code but it appear after ng serve > ng serve will rebuild app it will create js bundles (include the compiled ts)a dded automatically  to final file (index.html) these scripts contains our code . 
 
-  ![](/home/duaa/Pictures/s7.png)
+  ![](/s7.png)
 
-  ![](/home/duaa/Pictures/s3.png)
+  ![](/s3.png)
 
   
 
@@ -257,9 +262,9 @@ SECTION 2 :The Basics .
 
   ​      *main.ts is the first file that will be executed . inside main.ts : we can enable productions ,etc ... but the most important things is that there is bootstrap module that start    our angular app by passing app module (app.module.ts) . inside this app module there are bootstrap section include boostrap which is  an array contained all components(their selctor name) that tell angular to analyze the index.html(must added/insert  to index.html as tag (by selector name )) . so the angular will read each component with its setup (html/css)
 
-  ![](/home/duaa/Pictures/s4.png)
+  ![](/s4.png)
 
-![](/home/duaa/Pictures/s5.png)
+![](/s5.png)
 
 
 
@@ -299,7 +304,7 @@ we must import ng module from angular core to use @NgModule decorator .
 
   3-imports : allow us to add other modules to this modules . also we add some modules built in angular (because angular itself is split into modules) like browsermodule/formsmodule/httpmodule
 
-![](/home/duaa/Pictures/s8.png)
+![](/s8.png)
 
 
 
@@ -370,7 +375,7 @@ color:dodgerblue;
 
 3-two way communication : first react event then output data at the same time
 
-![](/home/duaa/Pictures/s9.png)
+![](/s9.png)
 
 
 
@@ -694,7 +699,7 @@ onCreateServer(){
  
 ```
 
-![](/home/duaa/Pictures/s10.png)
+![](/s10.png)
 
 // assignment 3 : 
 
@@ -833,9 +838,9 @@ in ts :
 
 # Course Project 1 :
 
-![](/home/duaa/Pictures/s11.png)
+![](/s11.png)
 
-![](/home/duaa/Pictures/s12.png)
+![](/s12.png)
 
 Steps :
 
@@ -867,7 +872,7 @@ Steps :
 
   using default bootstrap header :
 
-![](/home/duaa/Pictures/s15.png)
+![](/s15.png)
 
 ```html
 
@@ -913,7 +918,7 @@ Steps :
 
 5-create recipe model and use it to create arrays of it inside recipelistcomponent
 
-  ![](/home/duaa/Pictures/s16.png)
+  ![](/s16.png)
 
 fill the list then inside recipelist hrml using ng for  of this list 
 
@@ -956,11 +961,11 @@ recipes: Recipe[] =[]
 
 instead of recipe list these the result . 
 
-![](/home/duaa/Pictures/s17.png)
+![](/s17.png)
 
 6- add the needed rows and cols in recipe-details . later we will connect these 3 component togheter (recipe list with reciipe details )
 
-![](/home/duaa/Pictures/s18.png)
+![](/s18.png)
 
 7- shopping list : 
 
@@ -987,7 +992,7 @@ Section 5 : Component and datbinding deep dive
 - cockpit has to get input values and fill the array inside app component : so need to talk with app component (cockpit with app component ).
 - server element is showing the info of element from the array that exist in app component (so server element compentnt will talk with app component ).
 
-![](/home/duaa/Pictures/s21.png)
+![](/s21.png)
 
 
 
@@ -1270,7 +1275,7 @@ inside child ts :
 
   -we nust import interfaces from it them from angular core  before use them 
 
-![](/home/duaa/Pictures/s23.png)
+![](/s23.png)
 
 ```
 //inside ts 
@@ -1631,7 +1636,7 @@ DIRECTIVES DEEP DIVE :
 
 ** attribute directives set on element  , structural directives : also do the same but it is also change the structure of the DOM around this element  . for example : If we have *ngIf on a paragraph, if that condition is false, this paragraph is removed from the DOM, so the overall view container is affected so it is structural directive . but in attribute directive we never destroy the element inside DOM it just changes some property of this element   .
 
-![](/home/duaa/Pictures/s24.png)
+![](/s24.png)
 
 -> PROJECT CALLED :DIRETIVES-START
 
@@ -1926,7 +1931,7 @@ constructor(private elRef: ElementRef) {}
 
 *  SECTION 9 : USING SERVICES AND DEPENDENCY INJECTION : 
 
-  ![](/home/duaa/Pictures/s25.png)
+  ![](/s25.png)
 
    ** service does not has decorator it just a ts class . 
 
@@ -1970,9 +1975,9 @@ export class AccountComponent {
 
  if we have a child of the app component, if we provide service it on that child, all the children of this child will have the same instance and the child itself but not the app component. The instances don't propagate up they only go down  that tree of components
 
-![](/home/duaa/Pictures/s26.png)
+![](/s26.png)
 
-//instead of set the action inside parent component and the output inside child  we put the action and list inside service and we inject this service inside parent (inside providers and constructor ) and if we need to use the same instance we don't put the service inside providers array inside child components . ( i.e : the child gives the parent data using output(event binding ) it emit event    the parent create action inside this action the parent fill array and gives data array to another child : instead of this approach  we create a service and inject this service in parent and 2 child but we need one instance so we put this service inside parent provider list only  , and inside service we have array and functions and inside parent we create array and initialize it from service array and inside childs we use this service and inside child we remove the output an emit function and use the service also we remove the event binding inside parent html  ) this gives the same results. )
+//instead of set the action inside parent component and the output inside child  we put the action and list inside service and we inject this service inside parent (inside providers and constructor ) and if we need to use the same instance we don't put the service inside providers array inside child components . ( i.e : the child gives the parent data using output(event binding ) it emit event    the parent create action inside this action the parent fill array and gives data array to another child : instead of this approach  we create a service and inject this service in parent and 2 child but we need one instance so we put this service inside parent provider list only   , and inside service we have array and functions and inside parent we create array and initialize it from service array and inside childs we use this service and inside child we remove the output an emit function and use the service also we remove the event binding inside parent html  ) this gives the same results. )
 
 ```
 //inside service : 
@@ -2342,7 +2347,7 @@ ngOnInit() {
 
 // if we put   http://localhost:4200/users/1/max will get this . 
 
-![](/home/duaa/Pictures/s30.png)
+![](/s30.png)
 
 // if we  put <a [routerLink]="['/users',10,'ahmad']">ahmad </a> the url will change but data will not  change ( it must reload to change it ) .  before the snapshot object is used to load data since angular doesn't really instantiate this component(we put it inside onInit) . so we can use snapshot for first initialization  .this.route.params ,Params here is an observable ,observables are a feature added by some other third-party package, not by Angular but heavily used by Angular which allow you to easily work with asynchronous tasks , this is an asynchronous task because the parameters of your currently loaded route might change at some point in the future if the user clicks this link ,So an observable is an easy way to subscribe to some event which might happen in the future, to then execute some code when it happens without having to wait for it now so  route.params it is obsevable and we can subscribed to it , and it will be executed each time the params changed . (but if params does not changes we can just use snapshot (for initialize ). ) here we need snahpshot for initialize and params as observable . 
 
@@ -2878,7 +2883,7 @@ COURSE PROJECT :
 
 before we implemented the navigation in our application with ngIf though and that is not really the best way of navigating around (select recipes/shopping list) , we will also add one new component, the recipe-edit component to create new recipes or edit existing ones
 
-![](/home/duaa/Pictures/s49.png)
+![](/s49.png)
 
 1- Setting up routes :
 
@@ -3063,7 +3068,7 @@ when click recipe item we want to route to route to recipe detail ( we put index
 
   of course you use it to handle asynchronous tasks because all these data sources here, user events ,triggered in your code or a HTTP request are asynchronous tasks, you don't know when they will happen and how long it does it take . So if you execute your normal application code, you don't want to wait for these events or you don't want to wait for the completion of such a HTTP request because that would block your program, would block .Therefore, we need methods of handling such asynchronous tasks and historically you might have used callbacks or promises
 
-  ![](/home/duaa/Pictures/s50.png)
+  ![](/s50.png)
 
   
 
@@ -3099,7 +3104,7 @@ export class HomeComponent implements OnInit ,OnDestroy{
 
 * subject : event emmiter ..... 
 
-  ![](/home/duaa/Pictures/s51.png)
+  ![](/s51.png)
 
 *  Course project : we can replace event emiter with subject . 
 
@@ -3111,11 +3116,11 @@ export class HomeComponent implements OnInit ,OnDestroy{
 
    Angular's job now is to allow you to retrieve the values the user , and also to check some other things, like is the form valid, did the user enter valid information . 
 
-  ![](/home/duaa/Pictures/form1.png)
+  ![](/form1.png)
 
  Angular actually offers two approaches when it comes to handling forms.
 
-![](/home/duaa/Pictures/form2.png)
+![](/form2.png)
 
 ```html
 <div class="container">
