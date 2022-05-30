@@ -1,6 +1,11 @@
+---
+typora-copy-images-to: microservice-img
+typora-root-url: microservice-img
+---
+
 ***Microservices using spring boot and spring cloud .***
 
-![](/home/duaa/Downloads/m1.png)
+![](/ms1.png)
 
 if we start with monolithic projects and then this project big , it hard for us to deploy it . also when team need to push app to  production the y will also will be taking the all terms changes to production .  so microservice allow us to focus on subset of entire application and deploy each subset independently be cause things are not coupled  .
 
@@ -198,7 +203,7 @@ if we start with monolithic projects and then this project big , it hard for us 
 
     * the service may running in more than one port (more than instance can run ) but the other service if they want to connect with it , they  need to know all ports of it  this b*
 
-      ![](/home/duaa/Pictures/ms1.png)
+      ![](/ms1.png)
 
     
 
@@ -241,31 +246,31 @@ public class CustomerRegistrationRequest {
 
 
 
-![](/home/duaa/Pictures/ms2.png)
+![](/ms2.png)
 
 ******************
 
 
 
-![](/home/duaa/Pictures/ms3.png)
+![](/ms3.png)
 
 
 
 *******************
 
-![](/home/duaa/Pictures/ms6.png)
+![](/ms6.png)
 
 
 
-![](/home/duaa/Pictures/ms7.png)
+![](/ms7.png)
 
 
 
-![](/home/duaa/Pictures/ms8.png)
+![](/ms8.png)
 
 
 
-![](/home/duaa/Pictures/ms9.png)
+![](/ms9.png)
 
 
 
@@ -275,59 +280,59 @@ note #Z1 : If `spring-cloud-sleuth-zipkin` is available then the app will genera
 
 https://docs.spring.io/spring-cloud-sleuth/docs/current/reference/html/getting-started.html#getting-started-terminology
 
-![](/home/duaa/Pictures/ms10.png)
+![](/ms10.png)
 
 
 
-![](/home/duaa/Pictures/mss1.png)                                                                                                                                                                                                                                                                                                                       
+![](/mss1.png)                                                                                                                                                                                                                                                                                                                       
 
 ***********
 
 docker logs zipkin 
 
-![](/home/duaa/Pictures/mss2.png)
+![](/mss2.png)
 
-![](/home/duaa/Pictures/mss3.png)
+![](/mss3.png)
 
 
 
-![](/home/duaa/Pictures/mss5.png)
+![](/mss5.png)
 
 *************
 
-![](/home/duaa/Pictures/mss6.png)
+![](/mss6.png)
 
-![](/home/duaa/Pictures/mss7.png)
+![](/mss7.png)
 
-![](/home/duaa/Pictures/mss8.png)
+![](/mss8.png)
 
 
 
-![](/home/duaa/Pictures/mss9.png)
+![](/mss9.png)
 
 
 
 ////////
 
-![](/home/duaa/Pictures/mss10.png)
+![](/mss10.png)
 
 
 
-![](/home/duaa/Pictures/mss11.png)
+![](/mss11.png)
 
 
 
-![](/home/duaa/Pictures/mss13.png)
+![](/mss13.png)
 
-![](/home/duaa/Pictures/mss14.png)
+![](/mss14.png)
 
-![](/home/duaa/Pictures/mss15.png)
+![](/mss15.png)
 
-![](/home/duaa/Pictures/mss16.png)
+![](/mss16.png)
 
-![](/home/duaa/Pictures/mss18.png)
+![](/mss18.png)
 
-![](/home/duaa/Pictures/msss1.png)
+![](/msss1.png)
 
 **Links**
 
@@ -359,5 +364,5 @@ In general, if you want a simple/traditional pub-sub message broker, the obvious
 
 **In general, if you want a framework for storing, reading (re-reading), and analyzing streaming data, use Apache Kafka.** It’s ideal for systems that are audited or those that need to store messages permanently. These can also be broken down into two main use cases for analyzing data (tracking, ingestion, logging, security etc.) or real-time processing.
 
-![](/home/duaa/Pictures/msss2.png)
+![](/msss2.png)
 
